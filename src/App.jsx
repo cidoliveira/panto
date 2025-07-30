@@ -1,7 +1,12 @@
 import "./App.css";
+import Hero from "./components/Hero";
 
 function App() {
-  return;
+  return (
+    <div className="font-[Gilroy]">
+      <Hero />
+    </div>
+  );
 }
 
 export default App;
