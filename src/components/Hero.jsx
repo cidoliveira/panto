@@ -13,7 +13,7 @@ export default function Hero() {
         backgroundColor: "lightgray",
       }}
     >
-      <header className="flex items-center justify-between px-5 py-5 sm:py-15 sm:px-10 lg:px-60 ">
+      <header className="flex items-center justify-between px-5 py-5 sm:py-15 sm:px-10 lg:px-20 ">
         <span className="text-2xl font-bold">Panto</span>
         <div className="hidden sm:flex sm:gap-5 md:gap-10 lg:gap-15">
           <a className="hover:invert" href="">

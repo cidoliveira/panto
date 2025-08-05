@@ -18,3 +18,7 @@
   font-weight: 700;
   font-style: normal;
 }
+
+.slick-dots {
+  padding-top: 2rem !important;
+}
