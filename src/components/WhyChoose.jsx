@@ -4,7 +4,7 @@ export default function WhyChoose() {
   return (
     <section className="flex flex-col items-center justify-center gap-10 p-20 align-middle lg:flex-row lg:gap-15">
       <h2 className="flex justify-center mr-10 text-4xl font-bold">
-        Why <br /> Choosing Us
+        Why <br /> Choose Us
       </h2>
       <div className="flex flex-col gap-2 max-w-60">
         <h3 className="text-2xl font-bold">Luxury facilities</h3>

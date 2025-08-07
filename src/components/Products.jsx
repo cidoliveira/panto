@@ -4,9 +4,27 @@ import chair1 from "../assets/img/products/sakarias-armchair-black-sporda-dark-g
 import chair2 from "../assets/img/products/chair2.png";
 import chair3 from "../assets/img/products/chair3.png";
 import chair4 from "../assets/img/products/chair4.png";
+import chair5 from "../assets/img/products/3d-furniture-modern-leather-single-chair-isolated-white-background-decoration-design-dining.png";
+import chair6 from "../assets/img/products/furniture.png";
+import chair7 from "../assets/img/products/furniture (1).png";
+
+import { useState } from "react";
 
 export default function Products() {
-  const products = [
+  const [chairState, setChairState] = useState(true);
+  const [bedsState, setBedsState] = useState(false);
+  const [sofaState, setSofaState] = useState(false);
+  const [lampState, setLampState] = useState(false);
+
+  const activeTabKey = chairState
+    ? "chairs"
+    : bedsState
+    ? "beds"
+    : sofaState
+    ? "sofas"
+    : "lamps";
+
+  const productsChairs = [
     {
       productImage: chair1,
       productClass: "Chair",
@@ -32,22 +50,22 @@ export default function Products() {
       productPrice: 921,
     },
     {
-      productImage: chair4,
+      productImage: chair5,
       productClass: "Chair",
-      productName: "Nyantuy Chair",
-      productPrice: 921,
+      productName: "Leather Chair",
+      productPrice: 425,
     },
     {
-      productImage: chair4,
+      productImage: chair6,
       productClass: "Chair",
-      productName: "Nyantuy Chair",
-      productPrice: 921,
+      productName: "Bolo Chair",
+      productPrice: 582,
     },
     {
-      productImage: chair4,
+      productImage: chair7,
       productClass: "Chair",
-      productName: "Nyantuy Chair",
-      productPrice: 921,
+      productName: "Furnu Chair",
+      productPrice: 245,
     },
   ];
 
@@ -97,36 +115,90 @@ export default function Products() {
       <h2 className="mx-4 mt-10 text-3xl font-bold text-center sm:text-4xl">
         Best Selling Products
       </h2>
+      <div className="flex bg-[#EEEEEE] rounded-full p-2 gap-2">
+        <button
+          style={chairState ? { background: "white" } : { background: "none" }}
+          className="px-5 py-1 rounded-full"
+          onClick={() => {
+            setChairState(true);
+            setBedsState(false);
+            setSofaState(false);
+            setLampState(false);
+          }}
+        >
+          Chair
+        </button>
+        <button
+          style={bedsState ? { background: "white" } : { background: "none" }}
+          className="px-5 py-1 rounded-full"
+          onClick={() => {
+            setChairState(false);
+            setBedsState(true);
+            setSofaState(false);
+            setLampState(false);
+          }}
+        >
+          Beds
+        </button>
+        <button
+          style={sofaState ? { background: "white" } : { background: "none" }}
+          className="px-5 py-1 rounded-full"
+          onClick={() => {
+            setChairState(false);
+            setBedsState(false);
+            setSofaState(true);
+            setLampState(false);
+          }}
+        >
+          Sofa
+        </button>
+        <button
+          style={lampState ? { background: "white" } : { background: "none" }}
+          className="px-5 py-1 rounded-full"
+          onClick={() => {
+            setChairState(false);
+            setBedsState(false);
+            setSofaState(false);
+            setLampState(true);
+          }}
+        >
+          Lamp
+        </button>
+      </div>
       <div className="flex justify-center w-full px-2">
         <div className="w-full max-w-6xl px-10">
-          <Slider {...settings}>
-            {products.map((props, idx) => (
-              <div key={idx} className="flex flex-col items-center px-2 mb-10">
-                <div className="bg-gradient-to-t from-[#FAFAFA] to-transparent rounded-t-3xl w-full max-w-55 mx-auto">
-                  <img
-                    className="object-contain w-full h-40 p-4 mx-auto sm:h-48 md:h-56 lg:h-60 sm:p-5"
-                    src={props.productImage}
-                    alt={props.productName}
-                  />
-                  <div className="flex flex-col p-4 sm:p-5 bg-white rounded-b-3xl w-full font-[Inter]">
-                    <span className="text-xs text-[#8D8D8D]">
-                      {props.productClass}
-                    </span>
-                    <h3 className="mt-1 text-base font-semibold sm:text-lg">
-                      {props.productName}
-                    </h3>
-                    <div className="flex items-center justify-between mt-4">
-                      <span className="pb-2 text-base font-semibold sm:text-lg">
-                        ${props.productPrice}
+          <Slider key={activeTabKey} {...settings}>
+            {chairState &&
+              productsChairs.map((props, idx) => (
+                <div
+                  key={idx}
+                  className="flex flex-col items-center px-2 mb-10"
+                >
+                  <div className="bg-gradient-to-t from-[#FAFAFA] to-transparent rounded-t-3xl w-full max-w-55 mx-auto">
+                    <img
+                      className="object-contain w-full h-40 p-4 mx-auto sm:h-48 md:h-56 lg:h-60 sm:p-5"
+                      src={props.productImage}
+                      alt={props.productName}
+                    />
+                    <div className="flex flex-col p-4 sm:p-5 bg-white rounded-b-3xl w-full font-[Inter]">
+                      <span className="text-xs text-[#8D8D8D]">
+                        {props.productClass}
                       </span>
-                      <button className="bg-[#0D1B39] text-white px-3 py-1 flex items-center rounded-full text-xl cursor-pointer hover:invert">
-                        +
-                      </button>
+                      <h3 className="mt-1 text-base font-semibold sm:text-lg">
+                        {props.productName}
+                      </h3>
+                      <div className="flex items-center justify-between mt-4">
+                        <span className="pb-2 text-base font-semibold sm:text-lg">
+                          ${props.productPrice}
+                        </span>
+                        <button className="bg-[#0D1B39] text-white px-3 py-1 flex items-center rounded-full text-xl cursor-pointer hover:invert">
+                          +
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </Slider>
         </div>
       </div>
